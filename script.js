@@ -63,25 +63,43 @@ for (let i = 0; i < operators.length; i++) {
       default:
         isOperator = true;
         toanTuHienTai = operator;
-        ClearMan();
+        if (isResult) {
+          soThuNhat = parseFloat(screen.innerHTML);
+          isResult = false;
+        } else {
+          if (soThuHai !== null) {
+            soThuHai = parseFloat(screen.innerHTML);
+            ThucHienPhepTinh();
+          } else {
+            soThuNhat = parseFloat(screen.innerHTML);
+          }
+        }
+
+        seconScreen.innerHTML = `${soThuNhat} ${operator}`;
+        manChinh = '';
+        screen.innerHTML = '';
         break;
     }
-    // phần này nó là ví dụ nếu mà cộng dồn r sau đó bắt dược giá trị cuối , nếu mà là click trừ thì là lấy giaTriCuoi trừ cho cái sothu2 , nhưng mà bắt sothu2 ở đây bị null
-
-    // if (isResult && !['x2', '1/x', '+/-', '2√x', '%'].includes(operator)) {
-    //   giaTriCuoi = soThuNhat; 
-    //   giaTriGanCuoi = parseFloat(screen.innerHTML); 
-    //   ClearMan(); 
-    //   seconScreen.innerHTML = `${giaTriCuoi} ${operator} ${giaTriGanCuoi}`;
-    //   if (operator === '+') { 
-    //     const final = giaTriCuoi + giaTriGanCuoi;
-    //     screen.innerHTML = final.toString(); 
-    //     Cong();
-    //   }
-    // }
   });
 }
-
+function ThucHienPhepTinh() {
+  switch (toanTuHienTai) {
+    case '+':
+      ketQua = soThuNhat + soThuHai;
+      break;
+    case '-':
+      ketQua = soThuNhat - soThuHai;
+      break;
+    case '*':
+      ketQua = soThuNhat * soThuHai;
+      break;
+    case '∕':
+      ketQua = soThuNhat / soThuHai;
+      break;
+    default:
+      return;
+  }
+}
 // Nút bằng
 equal.addEventListener('click', function (e) {
   dauBang = true; // phần này dùng để cộng liên tiếp , nếu mà cứ click cộng tiếp thì nó sẽ gán kết quả cho soThuNhat
@@ -177,7 +195,7 @@ function Cong() {
   if (dauBang === true) { // nếu click tiếp dấu = thì hiển gán soThuNhat = tong để cộng liên tiếp
     soThuNhat = tong;
   }
-  
+
 }
 // Phép Trừ
 function Tru() {
