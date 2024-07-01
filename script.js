@@ -8,7 +8,16 @@ const clearAll = document.querySelector(".clearAll");
 const del = document.querySelector(".del");
 const seconScreen = document.querySelector(".small");
 const demical = document.querySelector(".demical");
-
+// Bộ nhớ
+const locate = document.querySelector(".locate");
+const loca = document.querySelector(".localStorage");
+const add = document.querySelector(".addMemory");
+const text = document.querySelector(".text");
+const sub = document.querySelector(".subMemory");
+const store = document.querySelector(".storeMemory");
+const clearMemory = document.querySelector(".clearMemory");
+const recalMemory = document.querySelector(".recalMemory");
+// Biến
 let soThuNhat = 0;
 let soThuHai = 0;
 let toanTuHienTai = null; // Là tất cả các phép tính 
@@ -22,6 +31,79 @@ let dauBang = false; // cờ dấu =
 let giaTriCuoi = 0;
 let giaTriGanCuoi = null;
 let count = false;
+let toggleStore = false;
+let arr = [];
+// bật tắt 
+loca.addEventListener('click', function () {
+  if (toggleStore) { // bật 
+    locate.style.height = '400px';
+  } else { // tawts
+    locate.style.height = '0px';
+  }
+  toggleStore = !toggleStore;
+});
+// Cộng dồn vào số gần nhất trong bộ nhớ
+add.addEventListener('click', function () {
+  if (screen.innerHTML.trim() === '') {
+    if (arr.length === 0) { 
+      arr.push(0); 
+    } else {
+      arr[0] += 0; 
+    }
+  } else {
+    let value = parseFloat(screen.innerHTML);
+    if (arr.length > 0) {
+      arr[0] += value; 
+    } else {
+      arr.push(value); 
+    }
+  }
+  updateMemory();
+});
+// Trừ dồn vào số gần nhất trong bộ nhớ
+sub.addEventListener('click', function () {
+  if (screen.innerHTML.trim() === '') {
+    if (arr.length === 0) {
+      arr.push(0); 
+    } else {
+      arr[0] -= 0; 
+    }
+  } else {
+    let value = parseFloat(screen.innerHTML);
+    if (arr.length > 0) {
+      arr[0] -= value; 
+    } else {
+      arr.push(value); 
+    }
+  }
+  updateMemory();
+});
+// Thêm vào bộ nhớ
+store.addEventListener('click', function () {
+  let value = parseFloat(screen.innerHTML);
+  arr.unshift(value); // Thêm phần tử mới vào đầu mảng
+  updateMemory();
+});
+// gọi từ memory ra
+recalMemory.addEventListener('click', function() {
+  seconScreen.innerHTML = ''
+  if (arr.length > 0) {
+    screen.innerHTML = arr[0];
+    if (isOperator) {
+      soThuHai = arr[0];
+      isNum2 = true; 
+    } else {
+      soThuNhat = arr[0];
+      isNum1 = true; 
+    }
+  }
+});
+// Xóa toàn bộ bộ nhớ
+clearMemory.addEventListener('click', function () {
+  text.innerHTML = ''; 
+  arr = []; 
+});
+
 // click số
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function (e) {
@@ -43,7 +125,6 @@ for (let i = 0; i < numbers.length; i++) {
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function (e) {
     const operator = e.target.textContent.trim();
-    // Xử lý các phép tính đặc biệt
     switch (operator) {
       case 'x2':
         Pow(); // bình phương
@@ -195,8 +276,8 @@ function Cong() {
   if (dauBang === true) { // nếu click tiếp dấu = thì hiển gán soThuNhat = tong để cộng liên tiếp
     soThuNhat = tong;
   }
-
 }
+
 // Phép Trừ
 function Tru() {
   seconScreen.innerHTML = `${soThuNhat} - ${soThuHai} = `
@@ -265,6 +346,9 @@ function PhanTram() {
 }
 // Hàm bình phương
 function Pow() {
+  if (screen.innerHTML.trim() === '' ) {
+    return; 
+  }
   if (isResult) { // nếu số pow là kết quả
     let ketQua = parseFloat(screen.innerHTML);
     seconScreen.innerHTML = `sqr(${ketQua})`
@@ -397,11 +481,21 @@ function ClearAll() {
   manPhu = '';
   seconScreen.innerHTML = '';
   soThuNhat = 0;
-  soThuHai = null;
+  soThuHai = 0;
   toanTuHienTai = null;
   isNum1 = false;
   isNum2 = false;
   isOperator = false;
+}
+// Cập nhật hiển thị bộ nhớ
+function updateMemory() {
+  text.innerHTML = ''; 
+  arr.forEach(value => {
+    const m = document.createElement("p");
+    m.classList.add("hover")
+    m.innerText = value;
+    text.appendChild(m);
+  });
 }
 // Nút CE
 clearAll.addEventListener('click', function () {

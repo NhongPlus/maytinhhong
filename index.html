@@ -1,51 +1,62 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="main.css">
-        <title>Document</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="small"></div> <!-- Secondary screen -->
-            <div class="screen"></div>  <!-- Main screen -->
-            <div class="m-shape">
-                <div class="segment">MC</div>
-                <div class="segment">MR</div>
-                <div class="segment addMemory">M+</div>
-                <div class="segment">M-</div>
-                <div class="segment">MS</div>
-                <div class="segment localStorage">M∨</div>
-            </div>       
-            <div class="button">
-                <div class="item operator">%</div>
-                <div class="item clear">CE</div>
-                <div class="item clearAll">C</div>
-                <div class="item del">⌫</div>
-                <div class="item operator">1/x</div>
-                <button class="item operator" data-operator="x^2">x<sup>2</sup></button>
-                <div class="item operator">2√x</div>
-                <div class="item operator">∕</div>
-                <div class="item number">7</div>
-                <div class="item number">8</div>
-                <div class="item number">9</div>
-                <div class="item operator">*</div>
-                <div class="item number">4</div>
-                <div class="item number">5</div>
-                <div class="item number">6</div>
-                <div class="item operator ">-</div>
-                <div class="item number">1</div>
-                <div class="item number">2</div>
-                <div class="item number">3</div>
-                <div class="item operator">+</div>
-                <div class="item operator"><sup>+/<sub>-</div>
-                <div class="item number">0</div>
-                <div class="item demical">,</div>
-                <div class="item equal">=</div>
-            </div>
-            
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="small"></div> <!-- Secondary screen -->
+        <div class="screen"></div> <!-- Main screen -->
+        <div class="m-shape">
+            <div class="segment clearMemory">MC</div>
+            <div class="segment recalMemory">MR</div>
+            <div class="segment addMemory">M+</div>
+            <div class="segment subMemory">M-</div>
+            <div class="segment storeMemory">MS</div>
+            <div class="segment localStorage">M∨</div>
         </div>
-        <script src="script.js"></script>
-    </body>
-    </html>
+        <div class="button">
+            <div class="item operator">%</div>
+            <div class="item clear">CE</div>
+            <div class="item clearAll">C</div>
+            <div class="item del">⌫</div>
+            <div class="item operator">1/x</div>
+            <button class="item operator" data-operator="x^2">x<sup>2</sup></button>
+            <div class="item operator">2√x</div>
+            <div class="item operator">∕</div>
+            <div class="item number">7</div>
+            <div class="item number">8</div>
+            <div class="item number">9</div>
+            <div class="item operator">*</div>
+            <div class="item number">4</div>
+            <div class="item number">5</div>
+            <div class="item number">6</div>
+            <div class="item operator ">-</div>
+            <div class="item number">1</div>
+            <div class="item number">2</div>
+            <div class="item number">3</div>
+            <div class="item operator">+</div>
+            <div class="item operator"><sup>+/<sub>-</div>
+            <div class="item number">0</div>
+            <div class="item demical">,</div>
+            <div class="item equal">=</div>
+        </div>
+        <div class="locate">
+            <div class="text">
+                <p></p>
+            </div>
+            <i class="fa-regular fa-trash-can"></i>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

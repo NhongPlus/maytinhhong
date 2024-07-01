@@ -13,6 +13,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
+    z-index: 5;
 }
 
 .screen {
@@ -25,6 +27,7 @@ body {
     font-size: 25px;
     box-sizing: border-box;
 }
+
 .small {
     height: 80px;
     background-color: #222;
@@ -34,7 +37,7 @@ body {
     padding: 0 20px;
     font-size: 25px;
     box-sizing: border-box;
-   
+
 }
 
 .button {
@@ -55,13 +58,15 @@ body {
     background-color: #f9f9f9;
     border-radius: 7px;
 }
-.item .equal{
+
+.item .equal {
     background-color: plum;
 }
 
 .item:hover {
     background-color: #eaeaea;
 }
+
 .m-shape {
     display: flex;
     justify-content: space-between;
@@ -72,7 +77,39 @@ body {
 }
 
 .segment {
-    width: 20px; /* Adjust size */
-    height: 20px; /* Adjust size */
-    /* Add styling to create the M shape */
+    width: 20px;
+    height: 20px;
+}
+
+.locate {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    background-color: #6d6c6c;
+    transition: height 0.9s ease; 
+    z-index: 10;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.locate i {
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    
+}
+
+.text {
+    color: #fff;
+    float: right;
+    padding: 0px 20px;
+    font-size: 18px;
+}
+.hover{
+    display: flex;
+    justify-content: flex-end;
 }
