@@ -103,7 +103,17 @@ clearMemory.addEventListener('click', function () {
   text.innerHTML = '';
   arr = [];
 });
-
+// Nút demical
+demical.addEventListener('click', function (e) {
+  const demi = e.target.textContent;
+  if (manChinh === "") {
+    manChinh = "0";
+  }
+  if (!manChinh.includes('.')) {
+    manChinh += '.';
+    screen.innerHTML = manChinh;
+  }
+});
 // click số
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function (e) {
@@ -121,6 +131,7 @@ for (let i = 0; i < numbers.length; i++) {
     }
   });
 }
+
 // Click toán tử
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function (e) {
@@ -183,69 +194,32 @@ function ThucHienPhepTinh() {
 }
 // Nút bằng
 equal.addEventListener('click', function (e) {
-  dauBang = true; // phần này dùng để cộng liên tiếp , nếu mà cứ click cộng tiếp thì nó sẽ gán kết quả cho soThuNhat
-  if (toanTuHienTai && isNum1 && isNum2) {
-    switch (toanTuHienTai) {
-      case '+':
-        Cong();
-        break;
-      case '-':
-        Tru();
-        break;
-      case '*':
-        Nhan();
-        break;
-      case '∕':
-        Chia();
-        break;
-      default:
-        break;
-    }
+  dauBang = true; // cộng liên tục 
+  if(isNum1 === false){
+    soThuNhat = 0 + soThuNhat;
   }
-});
-
-// Nút Del
-del.addEventListener('click', function () {
-  if (manChinh.length > 0) {
-    manChinh = manChinh.slice(0, -1);
-    screen.innerHTML = manChinh;
-  }
-
-  if (isOperator) {
-    if (manChinh !== "") {
-      soThuHai = parseFloat(manChinh);
-      isNum2 = true;
-    } else {
-      soThuHai = 0;
-      isNum2 = false;
-    }
-  } else {
-    if (manChinh !== "") {
-      soThuNhat = parseFloat(manChinh);
-      isNum1 = true;
-    } else {
-      soThuNhat = 0;
-      isNum1 = false;
-    }
-  }
-});
-
-// Nút demical
-demical.addEventListener('click', function (e) {
-  const demi = e.target.textContent;
-  if (manChinh === "") {
-    manChinh = "0";
-  }
-  if (!manChinh.includes('.')) {
-    manChinh += '.';
-    screen.innerHTML = manChinh;
+  switch (toanTuHienTai) {
+    case '+':
+      Cong();
+      break;
+    case '-':
+      Tru();
+      break;
+    case '*':
+      Nhan();
+      break;
+    case '∕':
+      Chia();
+      break;
+    default:
+      break;
   }
 });
 
 // Số Đầu 
 function SoDau(num) {
   if (manChinh === "0" && num === "0") { // nếu mà màn chính = 0 ròi mà num = 0 thì ko làm j cả
-    return;
+    soThuNhat = 0;
   }
   manChinh += `${num}`;
   manChinh = manChinh.replace(',', '.');
@@ -324,6 +298,9 @@ function Chia() {
 
 // Phần Trăm
 function PhanTram() {
+  if (screen.innerHTML.trim() === '') {
+    return;
+  }
   if (isResult) { // nếu số phần trăm là kết quả
     let ketQua = parseInt(screen.innerHTML);
     seconScreen.innerHTML = `${ketQua}`
@@ -388,6 +365,9 @@ function Pow() {
 }
 // Căn 
 function SquareRoot() {
+  if (screen.innerHTML.trim() === '') {
+    return;
+  }
   if (isResult) {
     let ketQua = parseFloat(screen.innerHTML);
     seconScreen.innerHTML = `√(${ketQua})`
@@ -421,6 +401,9 @@ function SquareRoot() {
 }
 // Hàm 1 nghịch đảo
 function Fraction() {
+  if (screen.innerHTML.trim() === '') {
+    return;
+  }
   if (isResult) {
     let ketQua = parseFloat(screen.innerHTML);
     seconScreen.innerHTML = `1/(${ketQua})`
@@ -454,6 +437,9 @@ function Fraction() {
 }
 // Hàm đổi dấu
 function toggleSign() {
+  if (screen.innerHTML.trim() === '') {
+    return;
+  }
   if (isResult) { // nếu là kết quả 
     let ketQua = parseFloat(screen.innerHTML);
     seconScreen.innerHTML = `negate(${ketQua})`
@@ -497,6 +483,7 @@ function ClearAll() {
   isNum1 = false;
   isNum2 = false;
   isOperator = false;
+  isResult = false;
 }
 // Cập nhật hiển thị bộ nhớ
 function updateMemory() {
@@ -519,8 +506,8 @@ function updateMemory() {
     buttonsContainer.appendChild(button1);
 
     button1.addEventListener("click", () => { // xóa tại vị trí đó
-      arr.splice(i, 1); 
-      updateMemory();   
+      arr.splice(i, 1);
+      updateMemory();
     });
 
     const button2 = document.createElement("button");
@@ -530,7 +517,7 @@ function updateMemory() {
     button2.addEventListener("click", () => { // cộng dồn tại vị trí đó
       const chuyenSo = screen.innerHTML
       arr[i] += parseFloat(chuyenSo);
-      updateMemory();   
+      updateMemory();
     });
 
     const button3 = document.createElement("button");
@@ -540,13 +527,12 @@ function updateMemory() {
     button3.addEventListener("click", () => { // tru dồn tại vị trí đó
       const chuyenSo = screen.innerHTML
       arr[i] -= parseFloat(chuyenSo);
-      updateMemory();   
+      updateMemory();
     });
 
     buttonsContainer.style.display = "none";
     memoryItem.appendChild(buttonsContainer);
 
-    // Show buttons on hover
     memoryItem.addEventListener("mouseover", function () {
       buttonsContainer.style.display = "block";
     });
