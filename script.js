@@ -37,8 +37,10 @@ let arr = [];
 loca.addEventListener('click', function () {
   if (toggleStore) { // bật 
     locate.style.height = '400px';
+    locate.style.top = '35%'
   } else { // tawts
     locate.style.height = '0px';
+    locate.style.top = '35%'
   }
   toggleStore = !toggleStore;
 });
@@ -86,18 +88,21 @@ store.addEventListener('click', function () {
 });
 // gọi từ memory ra
 recalMemory.addEventListener('click', function () {
-  seconScreen.innerHTML = ''
+  seconScreen.innerHTML = ''; 
   if (arr.length > 0) {
-    screen.innerHTML = arr[0];
+    screen.innerHTML = arr[0]; 
+    manChinh = arr[0].toString(); 
     if (isOperator) {
-      soThuHai = arr[0];
-      isNum2 = true;
+      soThuHai = arr[0]; 
+      isNum2 = true; i
     } else {
       soThuNhat = arr[0];
       isNum1 = true;
     }
+    isResult = false; 
   }
 });
+
 // Xóa toàn bộ bộ nhớ
 clearMemory.addEventListener('click', function () {
   text.innerHTML = '';
@@ -487,7 +492,7 @@ function ClearAll() {
 }
 // Cập nhật hiển thị bộ nhớ
 function updateMemory() {
-  text.innerHTML = '';
+  text.innerHTML = ''
   for (let i = 0; i < arr.length; i++) {
     const memoryItem = document.createElement("div");
     memoryItem.classList.add("memory-item");
@@ -503,6 +508,7 @@ function updateMemory() {
 
     const button1 = document.createElement("button");
     button1.innerText = "MC";
+    button1.setAttribute('title', 'Clear Memory Item');
     buttonsContainer.appendChild(button1);
 
     button1.addEventListener("click", () => { // xóa tại vị trí đó
@@ -512,6 +518,7 @@ function updateMemory() {
 
     const button2 = document.createElement("button");
     button2.innerText = "M+";
+    button2.setAttribute('title', 'Add To Memory Item');
     buttonsContainer.appendChild(button2);
 
     button2.addEventListener("click", () => { // cộng dồn tại vị trí đó
@@ -522,6 +529,7 @@ function updateMemory() {
 
     const button3 = document.createElement("button");
     button3.innerText = "M-";
+    button3.setAttribute('title', 'Subtract From Memory Item');
     buttonsContainer.appendChild(button3);
 
     button3.addEventListener("click", () => { // tru dồn tại vị trí đó
@@ -557,3 +565,4 @@ clear.addEventListener('click', function () {
 // khi cộng dồn các số vào r , giả sử - cho 1 số nào đó => phải đặt cái sổ ở MÀN CHÍNH làm số thứ nhất => phải lược cho các toán tử còn lại
 // nhưng mà toán tử nằm ở operator thì nếu mà chỉnh + - * / thì sẽ bị lỗi
 // Chỉnh ở phía các toán tử + - * / , với mỗi hàm truyền vào 1 toán tử , nếu khác toán tử đó thì set nó = sothunhat
+// text.innerHTML = "There's nothing saved in memory";
