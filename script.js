@@ -45,30 +45,17 @@ loca.addEventListener('click', function () {
 // Cộng dồn vào số gần nhất trong bộ nhớ
 add.addEventListener('click', function () {
   if (screen.innerHTML.trim() === '') {
-<<<<<<< HEAD
     if (arr.length === 0) {
       arr.push(0);
     } else {
       arr[0] += 0;
-=======
-    if (arr.length === 0) { 
-      arr.push(0); 
-    } else {
-      arr[0] += 0; 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     }
   } else {
     let value = parseFloat(screen.innerHTML);
     if (arr.length > 0) {
-<<<<<<< HEAD
       arr[0] += value;
     } else {
       arr.push(value);
-=======
-      arr[0] += value; 
-    } else {
-      arr.push(value); 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     }
   }
   updateMemory();
@@ -77,28 +64,16 @@ add.addEventListener('click', function () {
 sub.addEventListener('click', function () {
   if (screen.innerHTML.trim() === '') {
     if (arr.length === 0) {
-<<<<<<< HEAD
       arr.push(0);
     } else {
       arr[0] -= 0;
-=======
-      arr.push(0); 
-    } else {
-      arr[0] -= 0; 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     }
   } else {
     let value = parseFloat(screen.innerHTML);
     if (arr.length > 0) {
-<<<<<<< HEAD
       arr[0] -= value;
     } else {
       arr.push(value);
-=======
-      arr[0] -= value; 
-    } else {
-      arr.push(value); 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     }
   }
   updateMemory();
@@ -110,39 +85,23 @@ store.addEventListener('click', function () {
   updateMemory();
 });
 // gọi từ memory ra
-<<<<<<< HEAD
 recalMemory.addEventListener('click', function () {
-=======
-recalMemory.addEventListener('click', function() {
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
   seconScreen.innerHTML = ''
   if (arr.length > 0) {
     screen.innerHTML = arr[0];
     if (isOperator) {
       soThuHai = arr[0];
-<<<<<<< HEAD
       isNum2 = true;
     } else {
       soThuNhat = arr[0];
       isNum1 = true;
-=======
-      isNum2 = true; 
-    } else {
-      soThuNhat = arr[0];
-      isNum1 = true; 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     }
   }
 });
 // Xóa toàn bộ bộ nhớ
 clearMemory.addEventListener('click', function () {
-<<<<<<< HEAD
   text.innerHTML = '';
   arr = [];
-=======
-  text.innerHTML = ''; 
-  arr = []; 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
 });
 
 // click số
@@ -398,13 +357,8 @@ function PhanTram() {
 }
 // Hàm bình phương
 function Pow() {
-<<<<<<< HEAD
   if (screen.innerHTML.trim() === '') {
     return;
-=======
-  if (screen.innerHTML.trim() === '' ) {
-    return; 
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
   }
   if (isResult) { // nếu số pow là kết quả
     let ketQua = parseFloat(screen.innerHTML);
@@ -546,7 +500,6 @@ function ClearAll() {
 }
 // Cập nhật hiển thị bộ nhớ
 function updateMemory() {
-<<<<<<< HEAD
   text.innerHTML = '';
   for (let i = 0; i < arr.length; i++) {
     const memoryItem = document.createElement("div");
@@ -584,7 +537,7 @@ function updateMemory() {
     button3.innerText = "M-";
     buttonsContainer.appendChild(button3);
 
-    button3.addEventListener("click", () => { // cộng dồn tại vị trí đó
+    button3.addEventListener("click", () => { // tru dồn tại vị trí đó
       const chuyenSo = screen.innerHTML
       arr[i] -= parseFloat(chuyenSo);
       updateMemory();   
@@ -606,16 +559,6 @@ function updateMemory() {
   }
 }
 
-=======
-  text.innerHTML = ''; 
-  arr.forEach(value => {
-    const m = document.createElement("p");
-    m.classList.add("hover")
-    m.innerText = value;
-    text.appendChild(m);
-  });
-}
->>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
 // Nút CE
 clearAll.addEventListener('click', function () {
   ClearAll();
