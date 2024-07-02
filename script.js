@@ -45,17 +45,17 @@ loca.addEventListener('click', function () {
 // Cộng dồn vào số gần nhất trong bộ nhớ
 add.addEventListener('click', function () {
   if (screen.innerHTML.trim() === '') {
-    if (arr.length === 0) { 
-      arr.push(0); 
+    if (arr.length === 0) {
+      arr.push(0);
     } else {
-      arr[0] += 0; 
+      arr[0] += 0;
     }
   } else {
     let value = parseFloat(screen.innerHTML);
     if (arr.length > 0) {
-      arr[0] += value; 
+      arr[0] += value;
     } else {
-      arr.push(value); 
+      arr.push(value);
     }
   }
   updateMemory();
@@ -64,16 +64,16 @@ add.addEventListener('click', function () {
 sub.addEventListener('click', function () {
   if (screen.innerHTML.trim() === '') {
     if (arr.length === 0) {
-      arr.push(0); 
+      arr.push(0);
     } else {
-      arr[0] -= 0; 
+      arr[0] -= 0;
     }
   } else {
     let value = parseFloat(screen.innerHTML);
     if (arr.length > 0) {
-      arr[0] -= value; 
+      arr[0] -= value;
     } else {
-      arr.push(value); 
+      arr.push(value);
     }
   }
   updateMemory();
@@ -85,23 +85,23 @@ store.addEventListener('click', function () {
   updateMemory();
 });
 // gọi từ memory ra
-recalMemory.addEventListener('click', function() {
+recalMemory.addEventListener('click', function () {
   seconScreen.innerHTML = ''
   if (arr.length > 0) {
     screen.innerHTML = arr[0];
     if (isOperator) {
       soThuHai = arr[0];
-      isNum2 = true; 
+      isNum2 = true;
     } else {
       soThuNhat = arr[0];
-      isNum1 = true; 
+      isNum1 = true;
     }
   }
 });
 // Xóa toàn bộ bộ nhớ
 clearMemory.addEventListener('click', function () {
-  text.innerHTML = ''; 
-  arr = []; 
+  text.innerHTML = '';
+  arr = [];
 });
 
 // click số
@@ -307,24 +307,35 @@ function Chia() {
   console.log(soThuHai);
   if (soThuHai !== 0) {
     const thuong = soThuNhat / soThuHai;
-    screen.innerHTML = thuong;
+    if (Number.isInteger(thuong)) {
+      screen.innerHTML = thuong;
+    }
+    else {
+      screen.innerHTML = thuong.toFixed(5);
+    }
     manChinh = thuong.toString();
-    soThuNhat = thuong;
+    soThuNhat = thuong.toFixed(5);
     isResult = true;
   } else {
     screen.innerHTML = "Cannot divide by zero";
     manChinh = "";
   }
 }
+
 // Phần Trăm
 function PhanTram() {
   if (isResult) { // nếu số phần trăm là kết quả
     let ketQua = parseInt(screen.innerHTML);
     seconScreen.innerHTML = `${ketQua}`
     ketQua = ketQua / 100;
-    screen.innerHTML = ketQua;
+    if (Number.isInteger(ketQua)) {
+      screen.innerHTML = ketQua;
+    }
+    else {
+      screen.innerHTML = ketQua.toFixed(5);
+    }
     manChinh = ketQua.toString();
-    soThuNhat = ketQua; // gán tiếp nếu tiếp tục bình phương
+    soThuNhat = ketQua.toFixed(5); // gán tiếp nếu tiếp tục bình phương
     isResult = false;
   } else { // nếu là sothunhat hoặc so thu 2
     const soHienTai = parseInt(manChinh);
@@ -334,7 +345,7 @@ function PhanTram() {
     } else {
       const phanTram = soHienTai / 100
       seconScreen.innerHTML = `${soHienTai}`
-      screen.innerHTML = phanTram;
+      screen.innerHTML = phanTram.toFixed(5);
       manChinh = phanTram.toString();
       if (isOperator) {
         soThuHai = phanTram;
@@ -346,16 +357,16 @@ function PhanTram() {
 }
 // Hàm bình phương
 function Pow() {
-  if (screen.innerHTML.trim() === '' ) {
-    return; 
+  if (screen.innerHTML.trim() === '') {
+    return;
   }
   if (isResult) { // nếu số pow là kết quả
     let ketQua = parseFloat(screen.innerHTML);
     seconScreen.innerHTML = `sqr(${ketQua})`
     ketQua = Math.pow(ketQua, 2);
-    screen.innerHTML = ketQua;
+    screen.innerHTML = ketQua.toFixed(5);
     manChinh = ketQua.toString();
-    soThuNhat = ketQua; // gán tiếp nếu tiếp tục bình phương
+    soThuNhat = ketQua;
     isResult = false;
   } else { // nếu là sothunhat hoặc so thu 2
     const soHienTai = parseFloat(manChinh);
@@ -365,7 +376,7 @@ function Pow() {
     } else {
       const binhPhuong = Math.pow(soHienTai, 2);
       seconScreen.innerHTML = `sqr(${soHienTai})`
-      screen.innerHTML = binhPhuong;
+      screen.innerHTML = binhPhuong.toFixed(5);
       manChinh = binhPhuong.toString();
       if (isOperator) {
         soThuHai = binhPhuong;
@@ -385,20 +396,20 @@ function SquareRoot() {
       manChinh = "";
     } else {
       ketQua = Math.sqrt(ketQua);
-      screen.innerHTML = ketQua;
+      screen.innerHTML = ketQua.toFixed(5);
       manChinh = ketQua.toString();
       soThuNhat = ketQua;
       isResult = false;
     }
   } else {
     const soHienTai = parseFloat(manChinh);
-    seconScreen.innerHTML = `√(${soHienTai})`
+    seconScreen.innerHTML = `√(${soHienTai.toFixed(5)})`
     if (soHienTai < 0) {
       screen.innerHTML = "Undefined";
       manChinh = "";
     } else {
       const can = Math.sqrt(soHienTai);
-      screen.innerHTML = can;
+      screen.innerHTML = can.toFixed(5);
       manChinh = can.toString();
       if (isOperator) {
         soThuHai = can;
@@ -418,7 +429,7 @@ function Fraction() {
       manChinh = "";
     } else {
       ketQua = 1 / ketQua;
-      screen.innerHTML = ketQua;
+      screen.innerHTML = ketQua.toFixed(5);
       manChinh = ketQua.toString();
       soThuNhat = ketQua;
       isResult = false;
@@ -431,7 +442,7 @@ function Fraction() {
       manChinh = "";
     } else {
       const nghichDao = 1 / soHienTai;
-      screen.innerHTML = nghichDao;
+      screen.innerHTML = nghichDao.toFixed(5);
       manChinh = nghichDao.toString();
       if (isOperator) {
         soThuHai = nghichDao;
@@ -489,14 +500,65 @@ function ClearAll() {
 }
 // Cập nhật hiển thị bộ nhớ
 function updateMemory() {
-  text.innerHTML = ''; 
-  arr.forEach(value => {
+  text.innerHTML = '';
+  for (let i = 0; i < arr.length; i++) {
+    const memoryItem = document.createElement("div");
+    memoryItem.classList.add("memory-item");
+
     const m = document.createElement("p");
-    m.classList.add("hover")
-    m.innerText = value;
-    text.appendChild(m);
-  });
+    m.classList.add("hover");
+    m.innerText = arr[i];
+    memoryItem.appendChild(m);
+
+    // Create the buttons
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("buttons-container");
+
+    const button1 = document.createElement("button");
+    button1.innerText = "MC";
+    buttonsContainer.appendChild(button1);
+
+    button1.addEventListener("click", () => { // xóa tại vị trí đó
+      arr.splice(i, 1); 
+      updateMemory();   
+    });
+
+    const button2 = document.createElement("button");
+    button2.innerText = "M+";
+    buttonsContainer.appendChild(button2);
+
+    button2.addEventListener("click", () => { // cộng dồn tại vị trí đó
+      const chuyenSo = screen.innerHTML
+      arr[i] += parseFloat(chuyenSo);
+      updateMemory();   
+    });
+
+    const button3 = document.createElement("button");
+    button3.innerText = "M-";
+    buttonsContainer.appendChild(button3);
+
+    button3.addEventListener("click", () => { // cộng dồn tại vị trí đó
+      const chuyenSo = screen.innerHTML
+      arr[i] -= parseFloat(chuyenSo);
+      updateMemory();   
+    });
+
+    buttonsContainer.style.display = "none";
+    memoryItem.appendChild(buttonsContainer);
+
+    // Show buttons on hover
+    memoryItem.addEventListener("mouseover", function () {
+      buttonsContainer.style.display = "block";
+    });
+
+    memoryItem.addEventListener("mouseout", function () {
+      buttonsContainer.style.display = "none";
+    });
+
+    text.appendChild(memoryItem);
+  }
 }
+
 // Nút CE
 clearAll.addEventListener('click', function () {
   ClearAll();

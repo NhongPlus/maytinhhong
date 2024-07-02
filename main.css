@@ -86,7 +86,7 @@ body {
     top: 35%;
     width: 100%;
     background-color: #6d6c6c;
-    transition: height 0.9s ease; 
+    transition: height 0.9s ease;
     z-index: 10;
     overflow-y: auto;
     border: 1px solid #ccc;
@@ -100,7 +100,7 @@ body {
     padding: 20px;
     border-radius: 20px;
     color: #fff;
-    
+
 }
 
 .text {
@@ -109,7 +109,18 @@ body {
     padding: 0px 20px;
     font-size: 18px;
 }
-.hover{
+
+.hover {
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.memory-item {
+    position: relative;
+}
+
+.buttons-container {
+    display: flex;
 }
