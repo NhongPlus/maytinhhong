@@ -86,7 +86,11 @@ body {
     top: 35%;
     width: 100%;
     background-color: #6d6c6c;
+<<<<<<< HEAD
     transition: height 0.9s ease;
+=======
+    transition: height 0.9s ease; 
+>>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
     z-index: 10;
     overflow-y: auto;
     border: 1px solid #ccc;
@@ -100,7 +104,11 @@ body {
     padding: 20px;
     border-radius: 20px;
     color: #fff;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
 }
 
 .text {
@@ -109,6 +117,7 @@ body {
     padding: 0px 20px;
     font-size: 18px;
 }
+<<<<<<< HEAD
 
 .hover {
     display: flex;
@@ -123,4 +132,9 @@ body {
 
 .buttons-container {
     display: flex;
+=======
+.hover{
+    display: flex;
+    justify-content: flex-end;
+>>>>>>> 7cd147bf1fc5a005c0b8cd5e8ca8e6c256da274b
 }
