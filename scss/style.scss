@@ -15,6 +15,7 @@ body {
     &-dark {
         // tối
         background-color: $dark-theme; // Nền dark mode khi có class dark-mode được thêm vào body
+        transition: background-color 0.8s, color 0.8s;
         i {
             background-color: #fff;
         }
@@ -60,6 +61,7 @@ body {
     &-light {
         // sáng
         background-color: $light-theme; // Nền dark mode khi có class dark-mode được thêm vào body
+        transition: background-color 0.8s, color 0.8s;
         i {
             background-color: #000;
             color: #eaeaea;
