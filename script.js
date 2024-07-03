@@ -1,22 +1,27 @@
+const screen = document.querySelector(".calculator__screen--main");
+const seconScreen = document.querySelector(".calculator__screen--secon");
+// button
 const equal = document.querySelector(".equal");
-const plus = document.querySelector(".plus");
-const screen = document.querySelector(".screen");
+const plus = document.querySelector(".operator:nth-child(20)"); 
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const clear = document.querySelector(".clear");
 const clearAll = document.querySelector(".clearAll");
 const del = document.querySelector(".del");
-const seconScreen = document.querySelector(".small");
 const demical = document.querySelector(".demical");
-// Bộ nhớ
-const locate = document.querySelector(".locate");
+// Dark/Light Mode
+const mode = document.querySelector(".fa-lightbulb");
+const app = document.querySelector(".app")
+// Memory actions
+const locate = document.querySelector(".calculator__memory-actions");
+const text = document.querySelector(".calculator__memory-actions__text");
 const loca = document.querySelector(".localStorage");
 const add = document.querySelector(".addMemory");
-const text = document.querySelector(".text");
 const sub = document.querySelector(".subMemory");
 const store = document.querySelector(".storeMemory");
 const clearMemory = document.querySelector(".clearMemory");
 const recalMemory = document.querySelector(".recalMemory");
+
 // Biến
 let soThuNhat = 0;
 let soThuHai = 0;
@@ -32,8 +37,21 @@ let giaTriCuoi = 0;
 let giaTriGanCuoi = null;
 let count = false;
 let toggleStore = false;
+let toggleMode = false;
 let arr = [];
-// bật tắt 
+// bật tắt mode
+mode.addEventListener('click',function(){
+  if(toggleMode){
+    app.classList.add("app-light")
+    app.classList.remove("app-dark")
+  }
+  else{
+    app.classList.remove("app-light")
+    app.classList.add("app-dark")
+  }
+  toggleMode = !toggleMode;
+})
+// bật tắt store
 loca.addEventListener('click', function () {
   if (toggleStore) { // bật 
     locate.style.height = '400px';
@@ -94,7 +112,7 @@ recalMemory.addEventListener('click', function () {
     manChinh = arr[0].toString(); 
     if (isOperator) {
       soThuHai = arr[0]; 
-      isNum2 = true; i
+      isNum2 = true; 
     } else {
       soThuNhat = arr[0];
       isNum1 = true;
@@ -495,16 +513,16 @@ function updateMemory() {
   text.innerHTML = ''
   for (let i = 0; i < arr.length; i++) {
     const memoryItem = document.createElement("div");
-    memoryItem.classList.add("memory-item");
+    memoryItem.classList.add("calculator__memory-actions__item");
 
     const m = document.createElement("p");
-    m.classList.add("hover");
+    m.classList.add("calculator__memory-actions__hover");
     m.innerText = arr[i];
     memoryItem.appendChild(m);
 
     // Create the buttons
     const buttonsContainer = document.createElement("div");
-    buttonsContainer.classList.add("buttons-container");
+    buttonsContainer.classList.add("calculator__memory-actions__button-container");
 
     const button1 = document.createElement("button");
     button1.innerText = "MC";

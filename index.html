@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/style.css.map">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,51 +13,52 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="small"></div> <!-- Secondary screen -->
-        <div class="screen"></div> <!-- Main screen -->
-        <div class="m-shape">
-            <div class="segment clearMemory">MC</div>
-            <div class="segment recalMemory">MR</div>
-            <div class="segment addMemory">M+</div>
-            <div class="segment subMemory">M-</div>
-            <div class="segment storeMemory">MS</div>
-            <div class="segment localStorage">M∨</div>
-        </div>
-        <div class="button">
-            <div class="item operator">%</div>
-            <div class="item clear">CE</div>
-            <div class="item clearAll">C</div>
-            <div class="item del">⌫</div>
-            <div class="item operator">1/x</div>
-            <div class="item operator" data-operator="x^2">x<sup>2</sup></div>
-            <div class="item operator">2√x</div>
-            <div class="item operator">∕</div>
-            <div class="item number">7</div>
-            <div class="item number">8</div>
-            <div class="item number">9</div>
-            <div class="item operator">*</div>
-            <div class="item number">4</div>
-            <div class="item number">5</div>
-            <div class="item number">6</div>
-            <div class="item operator ">-</div>
-            <div class="item number">1</div>
-            <div class="item number">2</div>
-            <div class="item number">3</div>
-            <div class="item operator">+</div>
-            <div class="item operator"><sup>+/<sub>-</div>
-            <div class="item number">0</div>
-            <div class="item demical">,</div>
-            <div class="item equal">=</div>
-        </div>
-        <div class="locate">
-            <div class="text">
-                <p></p>
+    <div class="app">
+        <div class="calculator">
+            <div class="calculator__screen calculator__screen--secon"></div> <!-- Secondary screen -->
+            <div class="calculator__screen calculator__screen--main"></div> <!-- Main screen -->
+            <div class="calculator__memory">
+                <div class="calculator__memory--segment clearMemory" title="Memory Clear">MC</div>
+                <div class="calculator__memory--segment recalMemory" title="Memory Recall">MR</div>
+                <div class="calculator__memory--segment addMemory" title="Memory Add">M+</div>
+                <div class="calculator__memory--segment subMemory" title="Memory Subtract">M-</div>
+                <div class="calculator__memory--segment storeMemory" title="Memory Store">MS</div>
+                <div class="calculator__memory--segment localStorage" title="Memory">M∨</div>
             </div>
-            <i class="fa-regular fa-trash-can"></i>
-        </div>
+            <div class="calculator__button">
+                <div class="calculator__button--item operator">%</div>
+                <div class="calculator__button--item clear">CE</div>
+                <div class="calculator__button--item clearAll">C</div>
+                <div class="calculator__button--item del">⌫</div>
+                <div class="calculator__button--item operator">1/x</div>
+                <div class="calculator__button--item operator">x<sup>2</sup></div>
+                <div class="calculator__button--item operator">2√x</div>
+                <div class="calculator__button--item operator">∕</div>
+                <div class="calculator__button--item number">7</div>
+                <div class="calculator__button--item number">8</div>
+                <div class="calculator__button--item number">9</div>
+                <div class="calculator__button--item operator">*</div>
+                <div class="calculator__button--item number">4</div>
+                <div class="calculator__button--item number">5</div>
+                <div class="calculator__button--item number">6</div>
+                <div class="calculator__button--item operator ">-</div>
+                <div class="calculator__button--item number">1</div>
+                <div class="calculator__button--item number">2</div>
+                <div class="calculator__button--item number">3</div>
+                <div class="calculator__button--item operator">+</div>
+                <div class="calculator__button--item operator">+/-</div>
+                <div class="calculator__button--item number">0</div>
+                <div class="calculator__button--item demical">,</div>
+                <div class="calculator__button--item equal">=</div>
+            </div>
+            <div class="calculator__memory-actions">
+                <div class="calculator__memory-actions__text">
+                    <p></p>
+                </div>
+            </div>
+    </div>
+    <i class="fa-regular fa-lightbulb"></i>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
