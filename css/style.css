@@ -9,6 +9,7 @@ html[data-theme=light] {
   --color-nen: #fff;
   --color-text-btn: #fff;
   --color-btn: #323232;
+  --color-text-man: #fff;
 }
 
 html[data-theme=dark] {
@@ -21,6 +22,7 @@ html[data-theme=dark] {
   --color-nen: #000;
   --color-text-btn: #000;
   --color-btn: #F3F3F3;
+  --color-text-man: #000;
 }
 
 i {
@@ -58,7 +60,7 @@ body {
   height: 80px;
   background-color: var(--color-btn);
   transition: background-color 0.8s ease, color 0.8s ease;
-  color: white;
+  color: var(--color-text-man);
   text-align: right;
   line-height: 80px;
   padding: 0 20px;
