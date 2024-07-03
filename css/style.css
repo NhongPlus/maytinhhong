@@ -11,6 +11,7 @@ body {
 }
 .app-dark {
   background-color: #000;
+  transition: background-color 0.8s, color 0.8s;
 }
 .app-dark i {
   background-color: #fff;
@@ -49,6 +50,7 @@ body {
 }
 .app-light {
   background-color: #f4f4f4;
+  transition: background-color 0.8s, color 0.8s;
 }
 .app-light i {
   background-color: #000;
