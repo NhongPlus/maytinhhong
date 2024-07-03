@@ -21,7 +21,7 @@ const sub = document.querySelector(".subMemory");
 const store = document.querySelector(".storeMemory");
 const clearMemory = document.querySelector(".clearMemory");
 const recalMemory = document.querySelector(".recalMemory");
-
+const html = document.documentElement
 // Biến
 let soThuNhat = 0;
 let soThuHai = 0;
@@ -40,17 +40,16 @@ let toggleStore = false;
 let toggleMode = false;
 let arr = [];
 // bật tắt mode
-mode.addEventListener('click',function(){
+mode.addEventListener('click', function(){
+  toggleMode = !toggleMode;
   if(toggleMode){
-    app.classList.add("app-light")
-    app.classList.remove("app-dark")
+    html.setAttribute("data-theme", "dark");
   }
   else{
-    app.classList.remove("app-light")
-    app.classList.add("app-dark")
+    html.setAttribute("data-theme", "light");
   }
-  toggleMode = !toggleMode;
 })
+
 // bật tắt store
 loca.addEventListener('click', function () {
   if (toggleStore) { // bật 

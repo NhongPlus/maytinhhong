@@ -1,92 +1,26 @@
-body {
-  margin: 0;
+@charset "UTF-8";
+html[data-theme=light] {
+  --color-manphu: #222222;
+  --color-memory: #232323;
+  --color-text-memory: #fff;
+  --color-text-manphu: #fff;
+  --color-khungbtn: #222;
+  --color-boderbtn: #222;
+  --color-nen: #fff;
+  --color-text-btn: #fff;
+  --color-btn: #323232;
 }
 
-.app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-.app-dark {
-  background-color: #000;
-  transition: background-color 0.8s, color 0.8s;
-}
-.app-dark i {
-  background-color: #fff;
-}
-.app-dark .calculator__screen--secon, .app-dark .calculator__screen--main {
-  height: 80px;
-  background-color: #F3F3F3;
-  color: #323232;
-  text-align: right;
-  line-height: 80px;
-  padding: 0 20px;
-  font-size: 25px;
-  box-sizing: border-box;
-}
-.app-dark .calculator__button {
-  background-color: #eee;
-}
-.app-dark .calculator__button--item {
-  border: 1px solid #eee;
-  box-sizing: border-box;
-  cursor: pointer;
-  color: #000;
-  font-size: 1.5em;
-  background-color: #F3F3F3;
-  border-radius: 7px;
-}
-.app-dark .calculator__button--item:last-child {
-  background-color: plum;
-}
-.app-dark .calculator__button--item:hover {
-  background-color: #F9F9F9;
-}
-.app-dark .calculator__memory {
-  color: #323232;
-  background-color: #F9F9F9;
-}
-.app-light {
-  background-color: #f4f4f4;
-  transition: background-color 0.8s, color 0.8s;
-}
-.app-light i {
-  background-color: #000;
-  color: #eaeaea;
-}
-.app-light .calculator__screen--secon, .app-light .calculator__screen--main {
-  height: 80px;
-  background-color: #323232;
-  color: #F3F3F3;
-  text-align: right;
-  line-height: 80px;
-  padding: 0 20px;
-  font-size: 25px;
-  box-sizing: border-box;
-}
-.app-light .calculator__button {
-  background-color: #222;
-}
-.app-light .calculator__button--item {
-  border: 1px solid #000;
-  box-sizing: border-box;
-  cursor: pointer;
-  color: #f3f3f3;
-  font-size: 1.5em;
-  background-color: #323232;
-  border-radius: 7px;
-}
-.app-light .calculator__button--item:last-child {
-  background-color: plum;
-}
-.app-light .calculator__button--item:hover {
-  background-color: #3d3d3d;
-}
-.app-light .calculator__memory {
-  color: #F9F9F9;
-  background-color: #323232;
+html[data-theme=dark] {
+  --color-manphu: #F3F3F3;
+  --color-memory: #fff;
+  --color-text-memory: #232323;
+  --color-text-manphu: #323232;
+  --color-khungbtn: #eee;
+  --color-boderbtn: #eee;
+  --color-nen: #000;
+  --color-text-btn: #000;
+  --color-btn: #F3F3F3;
 }
 
 i {
@@ -94,14 +28,26 @@ i {
   bottom: 30px;
   right: 30px;
   padding: 15px 17px;
-  background-color: #6d6c6c;
+  background-color: var(--color-manphu);
+  color: var(--color-text-memory);
   border-radius: 50px;
   cursor: pointer;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Căn giữa theo chiều dọc */
+  margin: 0;
+  background-color: var(--color-nen);
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
 .calculator {
   width: 300px;
-  background-color: #ffffff;
+  background-color: var(--color-khungbtn);
+  transition: background-color 0.8s ease, color 0.8s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -110,7 +56,8 @@ i {
 }
 .calculator__screen--secon, .calculator__screen--main {
   height: 80px;
-  background-color: #222;
+  background-color: var(--color-btn);
+  transition: background-color 0.8s ease, color 0.8s ease;
   color: white;
   text-align: right;
   line-height: 80px;
@@ -122,8 +69,8 @@ i {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  color: #f3f3f3;
-  background-color: #323232;
+  color: var(--color-text-manphu);
+  background-color: var(--color-memory);
   cursor: pointer;
 }
 .calculator__memory--segment {
@@ -133,7 +80,7 @@ i {
 .calculator__button {
   display: flex;
   flex-wrap: wrap;
-  background-color: #222;
+  background-color: var();
 }
 .calculator__button--item {
   width: 25%;
@@ -141,19 +88,19 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  border: 1px solid #000;
+  color: var(--color-text-btn);
+  border: 1px solid var(--color-boderbtn);
   box-sizing: border-box;
   cursor: pointer;
   font-size: 1.5em;
-  background-color: #323232;
+  background-color: var(--color-btn);
   border-radius: 7px;
 }
 .calculator__button--item:last-child {
   background-color: plum;
 }
 .calculator__button--item:hover {
-  background-color: #3d3d3d;
+  background-color: var(--color-background);
 }
 .calculator__memory-actions {
   position: absolute;
